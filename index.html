@@ -211,6 +211,16 @@
     <button id="btnSincronizarAhora" class="btn-opcion">SINCRONIZAR AHORA</button>
     <div id="syncInfo" class="info-chica"></div>
     <hr>
+    <button id="btnExportarRespaldo" class="btn-opcion">Exportar respaldo de ventas</button>
+    <div id="respaldoInfo" class="info-chica">Descarga un archivo JSON con todas las ventas de este dispositivo. Solo lee: no modifica, no borra y no sincroniza nada.</div>
+    <hr>
+    <div id="bloqueImportar">
+      <button id="btnImportarElegir" class="btn-opcion">Importar historial de ventas (solo TEST)</button>
+      <input id="inputImportarArchivo" type="file" accept=".json,application/json" class="hidden">
+      <div id="importarInfo" class="info-chica" style="white-space:pre-line">Elegí el archivo de respaldo exportado desde la caja real. Se valida completo antes de importar; no se pisan ventas existentes.</div>
+      <button id="btnImportarConfirmar" class="btn-cobrar hidden">IMPORTAR</button>
+    </div>
+    <hr>
     <button id="btnResetPruebas" class="btn-peligro btn-opcion">Borrar ventas de prueba (local)</button>
     <div class="info-chica">Elimina únicamente Historial y cola de sincronización de este dispositivo. NO toca catálogo, artículos, combos ni configuración. Usar solo después de haber corrido el reset en Google Sheets.</div>
     <button class="btn-cerrar" data-close="modalConfig">Cerrar</button>
@@ -265,6 +275,8 @@
 <script src="/mundo-figus-pos-test/js/stats.js"></script>
 <script src="/mundo-figus-pos-test/js/charts.js"></script>
 <script src="/mundo-figus-pos-test/js/stats-ui.js"></script>
+<script src="/mundo-figus-pos-test/js/respaldo.js"></script>
+<script src="/mundo-figus-pos-test/js/importar-test.js"></script>
 <script src="/mundo-figus-pos-test/js/app.js"></script>
 </body>
 </html>

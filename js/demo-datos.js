@@ -166,6 +166,12 @@
       throw new Error('Esta carga solo funciona en la versión TEST (base mundoFigusPOS_TEST).');
     }
     await DB.openDB();
+    // Protección: esta carga VACÍA las ventas. Si hay ventas que no son de demostración
+    // (por ejemplo un historial real importado), se niega para no destruirlas.
+    const previas = await DB.getAll('ventas');
+    if (previas.some((v) => !String(v.IDVenta).startsWith('VTA-DEVDEMO-'))) {
+      throw new Error('La base TEST tiene ventas importadas (no son de demostración). No se cargó nada. Si querés usar los datos de demostración, primero tocá "Borrar todo lo de la versión TEST".');
+    }
     for (const s of ['articulos', 'combos', 'detalleCombos', 'ventas', 'syncQueue', 'espera']) await DB.clearStore(s);
     const dato = generarDemo(opciones);
     await DB.putAll('articulos', dato.articulos);

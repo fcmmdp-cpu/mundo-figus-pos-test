@@ -26,6 +26,7 @@
    catch (e) { est.textContent = 'Error: ' + e.message; }
  };
  document.getElementById('borrar').onclick = async () => {
+   if (!confirm('Esto borra TODO lo de la base TEST (demostración e historial importado). La caja real no se toca. ¿Continuar?')) return;
    est.textContent = 'Borrando…';
    try { await DemoDatos.borrarBase(); est.textContent = 'Listo: base de prueba vacía.'; }
    catch (e) { est.textContent = 'Error: ' + e.message; }
